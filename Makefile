@@ -190,6 +190,7 @@ package-%: # Create a stack package and copy lambda code to s3
 build-%: # requirements lint-% clean-% ## Build the stack locally
 	@echo Building stack: $(call get-stack-name,$*)
 	pwd
+	whoami
 	ls -l
 	sam --version
 	sam build \
