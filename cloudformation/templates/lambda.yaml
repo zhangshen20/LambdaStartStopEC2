@@ -11,6 +11,11 @@ Parameters:
     Type: String
     Description: Stack Suffix
 
+  ParamLoggingDebugLevel:
+    Description: Debugging level flag for logging
+    Type: String
+    Default: 1    
+
 Globals:
 
   Function:
