@@ -49,3 +49,10 @@ Resources:
                   - !Sub arn:aws:*:*:*:*
       Timeout: 15
       MemorySize: 128
+
+Outputs:
+  BestBetFunction:
+    Description: "Start Stop EC2"
+    Export:
+      Name: !Sub ${AWS::StackName}::StartEC2Function
+    Value: !Ref StartEC2Function
