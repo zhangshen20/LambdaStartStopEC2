@@ -4,6 +4,14 @@ pipeline {
 
     stages {
 
+        stage('Initialise') {
+            steps {
+                script {
+                    sh 'make clean; make venv'
+                }
+            }
+        }        
+
         stage('Build') {
             steps {
                 sh "make build-all"
