@@ -40,7 +40,7 @@ CONTAINER ?=
 CAPABILITY ?= CAPABILITY_NAMED_IAM
 
 # Define AWS Account
-ACCOUNT ?=
+ACCOUNT ?= 059023611520
 
 # Define team name (for s3)
 TEAM ?= 
