@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Start Stop EC2
+
+Parameters:
+  StackPrefix:
+    Type: String
+    Description: Stack Suffix
+
+  StackSuffix:
+    Type: String
+    Description: Stack Suffix
+
+Globals:
+
+  Function:
+    Runtime: python3.6
+
+Resources:
+  StartEC2Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./lambda/
+      Environment:
+        Variables:
+          DEBUG: !Ref ParamLoggingDebugLevel
+      Handler: startec2.lambda_handler
+      Policies:
+        - AWSLambdaExecute
+        - Version: '2012-10-17'
+          Statement:
+              - Effect: Allow
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:CreateLogStream
+                Resource:
+                  - !Sub arn:aws:logs:*:*:*
+              - Effect: Allow
+                Action:
+                  - ec2:Start*
+                  - ec2:Stop*
+                Resource:
+                  - !Sub arn:aws:*:*:*:*
+      Timeout: 15
+      MemorySize: 128
