@@ -38,7 +38,7 @@ Resources:
                 Action: 
                   - logs:CreateLogGroup
                   - logs:CreateLogStream
-                  - logs:CreateLogStream
+                  - logs:PutLogEvents
                 Resource:
                   - !Sub arn:aws:logs:*:*:*
               - Effect: Allow
@@ -46,7 +46,7 @@ Resources:
                   - ec2:Start*
                   - ec2:Stop*
                 Resource:
-                  - !Sub arn:aws:*:*:*:*
+                  - !Sub "*"
       Timeout: 15
       MemorySize: 128
 
