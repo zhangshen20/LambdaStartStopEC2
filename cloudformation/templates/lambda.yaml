@@ -50,9 +50,43 @@ Resources:
       Timeout: 15
       MemorySize: 128
 
+  StopEC2Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./lambda/
+      Environment:
+        Variables:
+          DEBUG: !Ref ParamLoggingDebugLevel
+      Handler: stopec2.lambda_handler
+      Policies:
+        - AWSLambdaExecute
+        - Version: '2012-10-17'
+          Statement:
+              - Effect: Allow
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource:
+                  - !Sub arn:aws:logs:*:*:*
+              - Effect: Allow
+                Action:
+                  - ec2:Start*
+                  - ec2:Stop*
+                Resource:
+                  - !Sub "*"
+      Timeout: 15
+      MemorySize: 128
+
 Outputs:
-  BestBetFunction:
-    Description: "Start Stop EC2"
+  StartEC2Function:
+    Description: "Start EC2"
     Export:
       Name: !Sub ${AWS::StackName}::StartEC2Function
     Value: !Ref StartEC2Function
+
+  StopEC2Function:
+    Description: "Stop EC2"
+    Export:
+      Name: !Sub ${AWS::StackName}::StopEC2Function
+    Value: !Ref StopEC2Function
