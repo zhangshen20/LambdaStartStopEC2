@@ -4,12 +4,12 @@ pipeline {
 
     stages {
 
-        // stage('Initialise') {
-        //     steps {
-        //         // sh 'make clean; make venv'
-        //         // sh 'make clean'
-        //     }
-        // }        
+        stage('Initialise') {
+            steps {
+                // sh 'make clean; make venv'
+                sh 'make clean'
+            }
+        }        
 
         stage('Build') {
             steps {
