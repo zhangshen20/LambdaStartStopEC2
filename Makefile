@@ -173,7 +173,7 @@ deploy-%: # Deploy the stack with specific name
 	@echo Deploying stack $(call get-stack-name,$*)
 	# --tags $(call get-tags) 
 	# --tags CostCentre="DataPlatform" Project="BestBet" Description="BestBetTippings" User="cdpsupportteam@sportsbet.com.au" DataClassification="Confidential"
-	sam deploy \
+	/usr/local/bin/sam deploy \
 		--template-file ${BUILD_PATH}/$*/package.yaml \
 		--region ${REGION} \
 		--stack-name $(call get-stack-name,$*) \
@@ -183,7 +183,7 @@ deploy-%: # Deploy the stack with specific name
 
 package-%: # Create a stack package and copy lambda code to s3
 	@echo Packaging stack: $(call get-stack-name,$*)
-	sam package \
+	/usr/local/bin/sam package \
 		--template-file ${BUILD_PATH}/$*/template.yaml \
 		--output-template-file ${BUILD_PATH}/$*/package.yaml \
 		--s3-bucket $(call get-lambda-s3-bucket) \
@@ -195,7 +195,7 @@ build-%: # requirements lint-% clean-% ## Build the stack locally
 	whoami
 	ls -l
 	/usr/local/bin/sam --version
-	sam build \
+	/usr/local/bin/sam build \
 		$(if ${CONTAINER},--use-container) \
 		--build-dir ${BUILD_PATH}/$* \
 		--base-dir . \
