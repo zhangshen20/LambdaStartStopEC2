@@ -1,4 +1,4 @@
-SHELL := /bin/bash -e
+SHELL := /bin/zsh -e
 
 .PHONY:  help  init install lock sync shell test prepare requirements stacks $(STACKS) clean clean-all clean-% \
 	delete-all-stacks delete-stack-% delete-failed-stack-% deploy-all deploy-% package-all package-% build-all build-% \
@@ -194,7 +194,6 @@ build-%: # requirements lint-% clean-% ## Build the stack locally
 	pwd
 	whoami
 	ls -l
-	where sam
 	sam --version
 	sam build \
 		$(if ${CONTAINER},--use-container) \
