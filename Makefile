@@ -121,7 +121,7 @@ venv:
 	@echo "--- make venv"
 	python3 --version
 	python3 -m venv venv
-	$(VENV_BIN)/pip install -Ur requirements.txt
+	$(VENV_BIN)/pip3 install -Ur requirements.txt
 	@echo""; echo Activate your venv by running \'source venv/bin/activate\'
 	source venv/bin/activate
 
