@@ -6,8 +6,8 @@ pipeline {
 
         stage('Initialise') {
             steps {
-                // sh 'make clean; make venv'
-                sh 'make clean'
+                sh 'make clean; make venv'
+                // sh 'make clean'
             }
         }        
 

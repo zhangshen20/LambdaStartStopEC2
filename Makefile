@@ -120,11 +120,11 @@ endef
 venv:
 	@echo "--- make venv"
 	python3 --version
-	# python3 -m venv venv
-	# @echo""; echo Activate your venv by running \'source venv/bin/activate\'
-	# source venv/bin/activate
-	# python3 -m pip install --upgrade pip
-	# $(VENV_BIN)/pip3 install -Ur requirements.txt
+	python3 -m venv venv
+	@echo""; echo Activate your venv by running \'source venv/bin/activate\'
+	source venv/bin/activate
+	python3 -m pip install --upgrade pip
+	$(VENV_BIN)/pip3 install -Ur requirements.txt
 
 
 all: install test stacks ## Make all
