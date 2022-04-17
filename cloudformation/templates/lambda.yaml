@@ -19,7 +19,7 @@ Parameters:
 Globals:
 
   Function:
-    Runtime: python3.9
+    Runtime: python3.8
 
 Resources:
   StartEC2Function:
